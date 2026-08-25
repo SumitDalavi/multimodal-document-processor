@@ -1,18 +1,23 @@
-# Multi-Modal Document Processor
+# multimodal-document-processor
 
-> An end-to-end pipeline processing PDFs via OCR, extracting structured data using LLMs, and validating against business rules with human-in-the-loop fallback.
+Advanced document processor capable of understanding charts, text, and images simultaneously using multimodal LLMs.
 
-## 🛠️ Tech Stack
-- **Core Technology**: Python, Tesseract, EasyOCR, Pydantic
-- **Architecture**: Microservices, Event-Driven, AI-Native
+## Features
+- Fully automated workflow.
+- Secure, scalable architecture.
+- Built-in telemetry and observability.
 
-## 🚀 Step-by-Step Setup
+## Technologies
+- Python, FastAPI
+
+## Getting Started
+Ensure you have the required dependencies installed on your system.
+
 ```bash
-git clone https://github.com/SumitDalavi/multimodal-document-processor.git
-cd multimodal-document-processor
-docker-compose up -d --build
+# Setup & Test
+pip install -r requirements.txt
+pytest
 ```
 
-## 👨‍💻 Author
-**Sumit Dalavi** — Senior DevSecOps / Platform Engineer
-[GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
+## Architecture
+Please see the [Architecture Document](docs/architecture.md) for sequence diagrams and system design details.
