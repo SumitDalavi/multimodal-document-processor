@@ -1,23 +1,32 @@
+import pytest
 from fastapi.testclient import TestClient
-import sys
-import os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '../src'))
-from main import app
+from src.main import app
+import io
 
 client = TestClient(app)
 
-def test_process_text_only():
-    response = client.post("/process", json={"id": "doc1", "text": "This is a test document."})
+def test_health_check():
+    response = client.get("/health")
     assert response.status_code == 200
-    assert "summary" in response.json()
-    assert "Processed document doc1" in response.json()["summary"]
+    assert response.json() == {"status": "healthy"}
 
-def test_process_text_and_image():
-    response = client.post("/process", json={"id": "doc2", "text": "Test", "image_url": "http://example.com/img.jpg"})
+def test_process_document_pdf():
+    file_content = b"%PDF-1.4 mock pdf content"
+    response = client.post(
+        "/api/v1/process",
+        files={"file": ("test.pdf", io.BytesIO(file_content), "application/pdf")}
+    )
     assert response.status_code == 200
-    assert "and an image" in response.json()["summary"]
+    data = response.json()
+    assert data["filename"] == "test.pdf"
+    assert data["status"] == "processed"
+    assert "PDF document" in data["ocr_text_preview"]
 
-def test_process_empty():
-    response = client.post("/process", json={"id": "doc3"})
-    assert response.status_code == 400
+def test_process_document_image():
+    file_content = b"fake image bytes"
+    response = client.post(
+        "/api/v1/process",
+        files={"file": ("test.png", io.BytesIO(file_content), "image/png")}
+    )
+    assert response.status_code == 200
+    assert "extracted from Image" in response.json()["ocr_text_preview"]
