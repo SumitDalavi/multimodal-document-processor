@@ -1,44 +1,47 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
-from pydantic import BaseModel
-import uuid
+"""FastAPI application for the Multimodal Document Processor."""
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
-app = FastAPI(title="Multimodal Document Processor")
+from src.api.routes import router
 
-class AnalysisResponse(BaseModel):
-    id: str
-    filename: str
-    file_size: int
-    content_type: str
-    ocr_text_preview: str
-    status: str
+app = FastAPI(
+    title="Multimodal Document Processor",
+    description=(
+        "Extract text, tables, charts, and figures from PDFs and images "
+        "using OCR + GPT-4o vision analysis."
+    ),
+    version="1.0.0",
+)
 
-def mock_ocr_process(filename: str) -> str:
-    """Mock OCR processing for demonstration."""
-    if filename.endswith('.pdf'):
-        return "Simulated extracted text from PDF document."
-    elif filename.endswith('.png') or filename.endswith('.jpg'):
-        return "Simulated text extracted from Image."
-    return "Unsupported format for OCR."
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.post("/api/v1/process", response_model=AnalysisResponse)
-async def process_document(file: UploadFile = File(...)):
-    if not file.filename:
-        raise HTTPException(status_code=400, detail="No file uploaded")
-        
-    content = await file.read()
-    file_size = len(content)
-    
-    ocr_result = mock_ocr_process(file.filename)
-    
-    return AnalysisResponse(
-        id=str(uuid.uuid4()),
-        filename=file.filename,
-        file_size=file_size,
-        content_type=file.content_type,
-        ocr_text_preview=ocr_result,
-        status="processed"
-    )
+app.include_router(router)
+
 
 @app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+def health():
+    import os
+    return {
+        "status": "ok",
+        "ocr_available": _check_ocr(),
+        "vision_available": bool(os.getenv("OPENAI_API_KEY")),
+    }
+
+
+def _check_ocr() -> bool:
+    try:
+        import pytesseract
+        pytesseract.get_tesseract_version()
+        return True
+    except Exception:
+        return False
+
+
+if __name__ == "__main__":
+    uvicorn.run("src.main:app", host="0.0.0.0", port=8000, reload=True)
