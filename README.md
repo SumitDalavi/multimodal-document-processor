@@ -1,6 +1,9 @@
+> **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
+
+
 # multimodal-document-processor
 
-> **Maturity:** Partial Prototype
+> **Maturity:** Functional Prototype
 > _Advanced document processor capable of understanding charts, text, and images simultaneously using multimodal LLMs, with citation tracking and OCR confidence metrics._
 
 ## Features
