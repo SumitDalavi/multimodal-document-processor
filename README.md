@@ -4,6 +4,10 @@
 # multimodal-document-processor
 
 [![Release](https://img.shields.io/github/v/release/SumitDalavi/multimodal-document-processor?color=blue&logo=github)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
+[![Release Workflow](https://github.com/SumitDalavi/multimodal-document-processor/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/multimodal-document-processor/actions/workflows/release.yml)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
+
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/multimodal-document-processor?color=blue&logo=github)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
 
 > **Maturity:** Functional Prototype
@@ -41,7 +45,7 @@ pytest
 - [Decisions](docs/decisions.md) — ADRs for citation mapping
 - [Changelog](docs/changelog.md) — Change history
 
-## Release & Verification
+## Release & Security Verification
 
 The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
 
@@ -61,3 +65,10 @@ gh release view v0.1.0 --repo SumitDalavi/multimodal-document-processor
 gh release download v0.1.0 --repo SumitDalavi/multimodal-document-processor --pattern "sbom.spdx.json"
 cat sbom.spdx.json | jq .
 ```
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Runbook](docs/runbook.md)
+- [Decisions](docs/decisions.md)
+- [Changelog](docs/changelog.md)
