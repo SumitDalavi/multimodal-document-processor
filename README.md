@@ -1,14 +1,14 @@
 > **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
 
-
 # multimodal-document-processor
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/multimodal-document-processor?color=blue&logo=github)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/multimodal-document-processor/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/multimodal-document-processor/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/multimodal-document-processor?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
 [![Release Workflow](https://github.com/SumitDalavi/multimodal-document-processor/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/multimodal-document-processor/actions/workflows/release.yml)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
-
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/multimodal-document-processor?color=blue&logo=github)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/multimodal-document-processor/releases)
+[![GHCR Container](https://img.shields.io/badge/ghcr.io-v0.2.0-blue?logo=docker&logoColor=white)](https://github.com/SumitDalavi/multimodal-document-processor/pkgs/container/multimodal-document-processor)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/multimodal-document-processor/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **Maturity:** Functional Prototype
 > _Advanced document processor capable of understanding charts, text, and images simultaneously using multimodal LLMs, with citation tracking and OCR confidence metrics._
