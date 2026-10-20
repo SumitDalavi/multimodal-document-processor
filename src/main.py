@@ -27,10 +27,12 @@ app.include_router(router)
 @app.get("/health")
 def health():
     import os
+    from src.credential_mode import detect_mode
     return {
         "status": "ok",
         "ocr_available": _check_ocr(),
         "vision_available": bool(os.getenv("OPENAI_API_KEY")),
+        "mode": detect_mode(),
     }
 
 
