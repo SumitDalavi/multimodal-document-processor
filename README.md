@@ -8,8 +8,7 @@
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/multimodal-document-processor/releases/tag/v0.2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Maturity:** Functional Prototype
-> _Advanced document processor capable of understanding charts, text, and images simultaneously using multimodal LLMs, with citation tracking and OCR confidence metrics._
+> Advanced document processor capable of understanding charts, text, and images simultaneously using multimodal LLMs, with citation tracking and OCR confidence metrics.
 
 ## Features
 - Fully automated workflow.
